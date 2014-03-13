@@ -20,7 +20,7 @@ public class Main {
 		do {
 
 			System.out.println();System.out.println();
-			System.out.println("---MENU---");
+			System.out.println("---MENU--- 2");
 			System.out.println("1: Aggiungi prenotazione.");
 			System.out.println("2: Stampa prenotazione.");
 			System.out.println("3: Lista disponibilita.");
@@ -30,6 +30,7 @@ public class Main {
 				System.out.print("---> ");
 				scelta=Integer.parseInt(in.readLine());
 			} catch (NumberFormatException e) {
+				
 				System.out.println("Carattere non consentito.");
 				scelta = 100;													//in questo modo richiedo il valore in input
 			}
