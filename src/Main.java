@@ -20,7 +20,7 @@ public class Main {
 		do {
 
 			System.out.println();System.out.println();
-			System.out.println("---MENU--- 2");
+			System.out.println("---MENU---");
 			System.out.println("1: Aggiungi prenotazione.");
 			System.out.println("2: Stampa prenotazione.");
 			System.out.println("3: Lista disponibilita.");
@@ -41,6 +41,8 @@ public class Main {
 				break;
 
 			case 1:
+				boolean cucina=false, biancheria=false;
+				
 				System.out.println();
 				System.out.print("Nome: ");
 				String nome = in.readLine();
@@ -54,11 +56,27 @@ public class Main {
 				} catch (NumberFormatException e) {
 					System.out.println("Carattere non consentito.");
 				}
+				
+				
+				System.out.print("Numero persone presenti: ");
+				int numPersone = Integer.parseInt(in.readLine());
+				System.out.print("Aggiunta cucina (0-no, 1-si: ");
+				int temp = Integer.parseInt(in.readLine());
+				if (temp == 1)
+					cucina = true;
+				System.out.print("Aggiunta biancheria (0-no, 1-si: ");
+				temp = Integer.parseInt(in.readLine());
+				if (temp == 1)
+					biancheria = true;
 
-				Prenotazione pr = new Prenotazione(nome, cognome, cf, rifUnita);
+				
+				
+				Prenotazione pr = new Prenotazione(nome, cognome, cf, rifUnita, numPersone, cucina, biancheria);
 				boolean ok = pr.controlloDisponibilita(rifUnita);
-				if (ok == true)
+				if (ok == true) {
 					lista.add(pr);
+					System.out.println("Prenotazione effettuata.");
+				}
 				else
 					System.out.println("Prenotazione non effettuata.");
 
