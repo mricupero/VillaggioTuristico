@@ -15,6 +15,7 @@ public class Main {
 		int scelta=0, rifUnita=0;																//rifUnita è 0!!!
 		LinkedList<Prenotazione> lista = new LinkedList<Prenotazione>();
 		GestioneDisponibilita mng = new GestioneDisponibilita();
+		Prenotazione pr= null;
 
 
 		do {
@@ -24,13 +25,14 @@ public class Main {
 			System.out.println("1: Aggiungi prenotazione.");
 			System.out.println("2: Stampa prenotazione.");
 			System.out.println("3: Lista disponibilita.");
+			System.out.println("4: Lista disponibilita.");
 			System.out.println("0: Esci.");
 
 			try {
 				System.out.print("---> ");
 				scelta=Integer.parseInt(in.readLine());
 			} catch (NumberFormatException e) {
-				
+
 				System.out.println("Carattere non consentito.");
 				scelta = 100;													//in questo modo richiedo il valore in input
 			}
@@ -42,7 +44,7 @@ public class Main {
 
 			case 1:
 				boolean cucina=false, biancheria=false;
-				
+
 				System.out.println();
 				System.out.print("Nome: ");
 				String nome = in.readLine();
@@ -56,8 +58,8 @@ public class Main {
 				} catch (NumberFormatException e) {
 					System.out.println("Carattere non consentito.");
 				}
-				
-				
+
+
 				System.out.print("Numero persone presenti: ");
 				int numPersone = Integer.parseInt(in.readLine());
 				System.out.print("Aggiunta cucina (0-no, 1-si: ");
@@ -69,9 +71,9 @@ public class Main {
 				if (temp == 1)
 					biancheria = true;
 
-				
-				
-				Prenotazione pr = new Prenotazione(nome, cognome, cf, rifUnita, numPersone, cucina, biancheria);
+
+
+				pr = new Prenotazione(nome, cognome, cf, rifUnita, numPersone, cucina, biancheria);
 				boolean ok = pr.controlloDisponibilita(rifUnita);
 				if (ok == true) {
 					lista.add(pr);
@@ -92,6 +94,14 @@ public class Main {
 
 			case 3:
 				mng.stampaDisponibilita();
+				break;
+
+			case 4:
+				System.out.println();
+				System.out.print("Inserire codice della prenotazione da eliminare: ");
+				int codice = Integer.parseInt(in.readLine()); 
+
+				pr.eliminaPrenotazione(lista, codice);
 				break;
 
 			default:

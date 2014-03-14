@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Random;
 
 
@@ -8,7 +9,7 @@ public class Prenotazione {
 	private String cf;														//codice fiscale
 	private int codice;
 	private int rifUnita;
-	
+
 	private int numPersone;
 	private boolean cucina;
 	private boolean biancheria;
@@ -98,5 +99,35 @@ public class Prenotazione {
 
 		System.out.println("Unita non presente.");
 		return false;
+	}
+
+	public void eliminaPrenotazione (LinkedList<Prenotazione> lista, int codice) {
+
+		Unita u = null;
+		boolean found = false;
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getCodice() == codice) {
+
+				//Risetto a disponibile l'unità
+				for (int j = 0; j < GestioneDisponibilita.getDisponibili().size(); j++) { 
+					u = GestioneDisponibilita.getDisponibili().get(j);
+					if (u.getRif() == lista.get(i).getRifUnita()) {
+						u.setPrenotato(false);
+					}
+				}
+				//fine reset
+				
+				lista.remove(i);
+				found = true;
+
+			}
+		}
+		
+		if (found ==true)														//al posto do questo creare una eccezione da gestire.
+			System.out.println("Prenotazione " + codice + " eliminata.");
+		else
+			System.out.println("Prenotazione non esiste.");
+
 	}
 }
