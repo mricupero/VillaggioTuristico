@@ -4,20 +4,14 @@ import java.util.Random;
 public class Campeggio extends Unita {
 
 	private static final String tipo="CAMPEGGIO";
-	private int prezzo;
+	private float prezzo;
+
 	
 	public Campeggio() {
 		super();
-		this.prezzo = new Random().nextInt((500 - 100) + 1) + 100;
+		//this.prezzo = new Random().nextInt((500 - 100) + 1) + 100;
 	}
 
-	public int getPrezzo() {
-		return prezzo;
-	}
-
-	public void setPrezzo(int prezzo) {
-		this.prezzo = prezzo;
-	}
 
 	public String getTipo() {
 		return tipo;
@@ -28,6 +22,21 @@ public class Campeggio extends Unita {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public float getPrezzo() {
+		// TODO Auto-generated method stub
+		return this.prezzo;
+	}
+
+	@Override
+	public void setPrezzo(float prezzoUnita) {
+		this.prezzo=prezzoUnita;
+		
+	}
+
+
+
 
 
 	

@@ -28,11 +28,14 @@ public abstract class Unita {
 		this.prenotato = prenotato;
 	}
 
+	public abstract float getPrezzo();
+
+	public abstract void setPrezzo(float prezzoUnita);
+
 	public abstract String getTipo();
 
 	public abstract int getNumLocali();
 
-	public abstract int getPrezzo();
 	
 	
 	

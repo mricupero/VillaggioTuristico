@@ -5,20 +5,13 @@ import java.util.Random;
 public class Casa extends Unita {
 
 	private static final String tipo="CASA";
-	private static int prezzo;
 	private static LinkedList<Appartamento> listaApp = new LinkedList<Appartamento>();
+	private float prezzo;
+
 
 	public Casa() {
 		super();
-		this.prezzo = new Random().nextInt((500 - 100) + 1) + 100;
-	}
-
-	public int getPrezzo() {
-		return prezzo;
-	}
-
-	public static void setPrezzo(int prezzo) {
-		Casa.prezzo = prezzo;
+		//this.prezzo = new Random().nextInt((500 - 100) + 1) + 100;
 	}
 
 	public static LinkedList<Appartamento> getListaApp() {
@@ -37,7 +30,19 @@ public class Casa extends Unita {
 	public int getNumLocali() {
 		// TODO Auto-generated method stub
 		return 0;
-	}	
+	}
+	
+	@Override
+	public float getPrezzo() {
+		return this.prezzo;
+	}
+	
+	@Override
+	public void setPrezzo(float prezzoUnita) {
+		this.prezzo=prezzoUnita;
+		
+	}
+
 	
 	
 	

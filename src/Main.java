@@ -9,7 +9,7 @@ import org.omg.CORBA.ExceptionList;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ErrorePrenotazione {
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		int scelta=0, rifUnita=0;																//rifUnita è 0!!!
@@ -25,7 +25,7 @@ public class Main {
 			System.out.println("1: Aggiungi prenotazione.");
 			System.out.println("2: Stampa prenotazione.");
 			System.out.println("3: Lista disponibilita.");
-			System.out.println("4: Lista disponibilita.");
+			System.out.println("4: Elimina prenotazione.");
 			System.out.println("0: Esci.");
 
 			try {
@@ -62,11 +62,11 @@ public class Main {
 
 				System.out.print("Numero persone presenti: ");
 				int numPersone = Integer.parseInt(in.readLine());
-				System.out.print("Aggiunta cucina (0-no, 1-si: ");
+				System.out.print("Aggiunta cucina (0-no, 1-si): ");
 				int temp = Integer.parseInt(in.readLine());
 				if (temp == 1)
 					cucina = true;
-				System.out.print("Aggiunta biancheria (0-no, 1-si: ");
+				System.out.print("Aggiunta biancheria (0-no, 1-si): ");
 				temp = Integer.parseInt(in.readLine());
 				if (temp == 1)
 					biancheria = true;

@@ -4,15 +4,14 @@ import java.util.Random;
 public class Appartamento extends Unita {
 	
 	private static final String tipo="APPARTAMENTO";
-	private int numLocali;
-	private int prezzo;
+	private int numLocali;	
 	
+	private float prezzo;
 	
 	public Appartamento( ) {
 		super();
 		this.numLocali = new Random().nextInt((4 - 2) + 1) + 2; 		//range da 2 a 4
-		this.prezzo = new Random().nextInt((500 - 100) + 1) + 100;
-
+		this.prezzo=200;
 	}
 
 	public int getNumLocali() {
@@ -23,20 +22,22 @@ public class Appartamento extends Unita {
 		this.numLocali = numLocali;
 	}
 
-	public int getPrezzo() {
-		return prezzo;
-	}
-
-	public void setPrezzo(int prezzo) {
-		this.prezzo = prezzo;
-	}
 
 	public String getTipo() {
 		return tipo;
 	}
-	
-	
 
-	
+	@Override
+	public float getPrezzo() {
+		// TODO Auto-generated method stub
+		return this.prezzo;
+	}
+
+	@Override
+	public void setPrezzo(float prezzoUnita) {
+		this.prezzo=prezzoUnita;
+		
+	}
+
 
 }

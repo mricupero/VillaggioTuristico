@@ -14,6 +14,8 @@ public class Prenotazione {
 	private boolean cucina;
 	private boolean biancheria;
 
+	private float prezzoTotale;
+
 	public Prenotazione(String nome, String cognome, String cf, int rifUnita, int numPersone, boolean cucina, boolean biancheria) {
 		super();	
 		this.nome = nome;
@@ -24,6 +26,9 @@ public class Prenotazione {
 		this.numPersone=numPersone;
 		this.cucina=cucina;
 		this.biancheria=biancheria;
+
+		float prezzoTotale=this.calcolaPrezzo(rifUnita);
+
 	}
 
 	public String getNome() {
@@ -75,10 +80,11 @@ public class Prenotazione {
 		System.out.println("Riferimento unita: " + this.rifUnita);
 		System.out.println("Numero persone: " + this.numPersone);
 		if (this.cucina == true)
-			System.out.println("+ cucina");
+			System.out.println("- supplemento cucina");
 		if (this.biancheria == true)
-			System.out.println("+ biancheria");
+			System.out.println("- supplemento biancheria");
 
+		System.out.println("Prezzo totale: " + this.prezzoTotale);
 
 	}
 
@@ -101,7 +107,7 @@ public class Prenotazione {
 		return false;
 	}
 
-	public void eliminaPrenotazione (LinkedList<Prenotazione> lista, int codice) {
+	public void eliminaPrenotazione (LinkedList<Prenotazione> lista, int codice) throws ErrorePrenotazione {
 
 		Unita u = null;
 		boolean found = false;
@@ -117,17 +123,37 @@ public class Prenotazione {
 					}
 				}
 				//fine reset
-				
+
 				lista.remove(i);
 				found = true;
 
 			}
 		}
-		
-		if (found ==true)														//al posto do questo creare una eccezione da gestire.
-			System.out.println("Prenotazione " + codice + " eliminata.");
-		else
-			System.out.println("Prenotazione non esiste.");
+
+		try {
+			if (found == false)
+				throw new ErrorePrenotazione();
+			else
+				System.out.println("Prenotazione cancellata.");
+		} catch (ErrorePrenotazione e) {}
 
 	}
+
+
+	public float calcolaPrezzo(int rife) {
+
+		Unita u = null;
+
+		for (int i = 0; i < GestioneDisponibilita.getDisponibili().size(); i++) {
+			u = GestioneDisponibilita.getDisponibili().get(i);
+			if (u.getRif() == rife) {
+				this.prezzoTotale=u.getPrezzo();
+				return prezzoTotale;
+			}
+		}
+		return 0;
+		
+	}
+	
+	
 }
