@@ -9,7 +9,12 @@ public class Campeggio extends Unita {
 	
 	public Campeggio() {
 		super();
-		//this.prezzo = new Random().nextInt((500 - 100) + 1) + 100;
+		this.prezzo = 100;//this.prezzo = new Random().nextInt((500 - 100) + 1) + 100;
+	}
+	
+	public Campeggio(float prezzo) {
+		super();
+		this.prezzo = prezzo;
 	}
 
 

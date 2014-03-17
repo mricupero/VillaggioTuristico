@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 
 
@@ -5,14 +8,13 @@ public class GestioneDisponibilita{
 	
 	private static LinkedList<Unita> disponibili = new LinkedList<Unita>();
 
-	public GestioneDisponibilita() {
+	public GestioneDisponibilita() throws IOException {
 		
-		Unita u = new Appartamento();
-		disponibili.add(u);
-		u = new Appartamento();
-		disponibili.add(u);
-		u = new Campeggio();
-		disponibili.add(u);
+		Unita u = new Appartamento();		
+		this.disponibili.add(u);
+		
+		u = new Campeggio();		
+		this.disponibili.add(u);
 
 	}
 	
@@ -55,11 +57,31 @@ public class GestioneDisponibilita{
 	
 	
 	
-	//public void aggiungiCasa();
+	public static void aggiungiCasa() {			///da fareeeeeeeeeee
+
+	}
 	
-	//public void aggiungiAppartamento();
+	public static void aggiungiAppartamento() throws IOException {
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("Numero di locali: ");
+		int locali = Integer.parseInt(in.readLine());
+		System.out.print("Prezzo appartamento: ");
+		float prezzo = Integer.parseInt(in.readLine());
+		
+		Unita u = new Appartamento(locali, prezzo);
+		disponibili.add(u);
+	}
 	
-	//public void aggiungiCampeggio();
+	public static void aggiungiCampeggio() throws NumberFormatException, IOException {
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("Prezzo campeggio: ");
+		float prezzo = Integer.parseInt(in.readLine());
+		
+		Unita u = new Campeggio(prezzo);
+		disponibili.add(u);
+	}
 
 
 }

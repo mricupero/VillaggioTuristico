@@ -26,6 +26,8 @@ public class Main {
 			System.out.println("2: Stampa prenotazione.");
 			System.out.println("3: Lista disponibilita.");
 			System.out.println("4: Elimina prenotazione.");
+			System.out.println("5: *** Aggiungi appartamento.");
+			System.out.println("6: *** Aggiungi campeggio.");
 			System.out.println("0: Esci.");
 
 			try {
@@ -62,7 +64,7 @@ public class Main {
 
 				System.out.print("Numero persone presenti: ");
 				int numPersone = Integer.parseInt(in.readLine());
-				System.out.print("Aggiunta cucina (0-no, 1-si): ");
+				System.out.print("Aggiunta cucina (0-no, 1-si): ");					//NON CHIEDERE SE ISTANZA DI NON APPARTAMENTO
 				int temp = Integer.parseInt(in.readLine());
 				if (temp == 1)
 					cucina = true;
@@ -104,6 +106,14 @@ public class Main {
 				pr.eliminaPrenotazione(lista, codice);
 				break;
 
+			case 5:
+				GestioneDisponibilita.aggiungiAppartamento();
+				break;
+				
+			case 6:
+				GestioneDisponibilita.aggiungiCampeggio();
+				break;
+				
 			default:
 
 				break;

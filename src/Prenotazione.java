@@ -27,7 +27,7 @@ public class Prenotazione {
 		this.cucina=cucina;
 		this.biancheria=biancheria;
 
-		float prezzoTotale=this.calcolaPrezzo(rifUnita);
+		float prezzoTotale=0;	//this.calcolaPrezzo(rifUnita);
 
 	}
 
@@ -84,6 +84,7 @@ public class Prenotazione {
 		if (this.biancheria == true)
 			System.out.println("- supplemento biancheria");
 
+		this.prezzoTotale = this.calcolaPrezzo(rifUnita);
 		System.out.println("Prezzo totale: " + this.prezzoTotale);
 
 	}
@@ -148,12 +149,21 @@ public class Prenotazione {
 			u = GestioneDisponibilita.getDisponibili().get(i);
 			if (u.getRif() == rife) {
 				this.prezzoTotale=u.getPrezzo();
-				return prezzoTotale;
+				if (u instanceof Appartamento) {
+					if (this.biancheria == true)
+						prezzoTotale += 20;
+					if (this.cucina == true)
+						prezzoTotale += 20;
+					prezzoTotale = prezzoTotale + (10 * this.numPersone);
+				}
+
 			}
 		}
-		return 0;
-		
+
+
+		return this.prezzoTotale;
+
 	}
-	
-	
+
+
 }

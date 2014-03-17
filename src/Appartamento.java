@@ -13,6 +13,12 @@ public class Appartamento extends Unita {
 		this.numLocali = new Random().nextInt((4 - 2) + 1) + 2; 		//range da 2 a 4
 		this.prezzo=200;
 	}
+	
+	public Appartamento(int numLocali, float prezzo ) {
+		super();
+		this.numLocali = numLocali; 		
+		this.prezzo=prezzo;
+	}
 
 	public int getNumLocali() {
 		return numLocali;
